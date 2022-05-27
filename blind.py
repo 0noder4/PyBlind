@@ -12,13 +12,14 @@ def setup():
 def cycle():
     for j in range(4):
         for i in range(4):
-            GPIO.output(motorPins[i], (CWStep[j] == 1<<i) and GPIO.HIGH or GPIO.LOW)
+            GPIO.output(motorPins[i], (1 << j == 1 << i) and GPIO.HIGH or GPIO.LOW)
         time.sleep(0.003)
 
 def rotate():
-    for i in range(128):
-        cycle()
-    print("Cycle finished")
+    while true:
+        for i in range(64):
+            cycle()
+        print("Cycle finished")
 
 def destroy():
     GPIO.cleanup()
