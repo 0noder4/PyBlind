@@ -16,7 +16,7 @@ def cycle():
         time.sleep(0.003)
 
 def rotate():
-    while true:
+    while True:
         for i in range(64):
             cycle()
         print("Cycle finished")
