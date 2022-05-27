@@ -17,9 +17,10 @@ def cycle():
 
 def rotate():
     while True:
-        for i in range(64):
+        for i in range(512):
             cycle()
-        print("Cycle finished")
+        print("full rotation")
+        time.sleep(1)
 
 def destroy():
     GPIO.cleanup()
