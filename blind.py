@@ -9,27 +9,29 @@ def setup():
     for pin in motorPins:
         GPIO.setup(pin, GPIO.OUT)
 
-def cycle():
+def cycle(direction):
     for j in range(4):
         for i in range(4):
-            GPIO.output(motorPins[i], (1 << j == 1 << i) and GPIO.HIGH or GPIO.LOW)
-        time.sleep(0.003)
+            GPIO.output(motorPins[i], (direction << j == direction << i) and GPIO.HIGH or GPIO.LOW)
+        time.sleep(0.01)
 
-def rotate():
-    while True:
-        for i in range(512):
-            cycle()
-        print("full rotation")
-        time.sleep(1)
+def rotate(times, direction):
+    for i in range(times * 512):
+        cycle(direction)
+    print("full rotation")
+    time.sleep(1)
 
 def destroy():
     GPIO.cleanup()
 
+def start():
+    times = input("How many rotations? ")
+    direction = input("which directions[1 for clockwise, 4 for counterclockwise] ")
 if __name__ == '__main__':
     print ("Cycle started")
     setup()
     try:
-        rotate()
+        start()
     except KeyboardInterrupt: 
         destroy()
 
