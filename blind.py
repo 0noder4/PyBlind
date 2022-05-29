@@ -13,7 +13,7 @@ def cycle(direction):
     for j in range(4):
         for i in range(4):
             GPIO.output(motorPins[i], (direction << j == direction << i) and GPIO.HIGH or GPIO.LOW)
-        time.sleep(0.01)
+        time.sleep(0.015)
 
 def rotate(times, direction):
     for i in range(times * 512):
