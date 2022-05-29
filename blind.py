@@ -27,6 +27,8 @@ def destroy():
 def start():
     times = input("How many rotations? ")
     direction = input("which directions[1 for clockwise, 4 for counterclockwise] ")
+    rotate(times, direction)
+    
 if __name__ == '__main__':
     print ("Cycle started")
     setup()
